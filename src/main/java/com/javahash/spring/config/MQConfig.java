@@ -28,18 +28,16 @@ package com.javahash.spring.config;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.activemq.command.ActiveMQTopic;
 import org.apache.activemq.spring.ActiveMQConnectionFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.core.JmsTemplate;
 
-@Configuration
+//@Configuration
 public class MQConfig {
 	/**
 	 * 配置连接工厂
 	 * 
 	 * @return 连接工厂
 	 */
-	@Bean(name = "connectionFactory")
+	// @Bean(name = "connectionFactory")
 	public ActiveMQConnectionFactory setActiveMQConnectionFactory() {
 		ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory();
 		activeMQConnectionFactory.setBrokerURL("tcp://localhost:61616");
@@ -51,7 +49,7 @@ public class MQConfig {
 	 * 
 	 * @return 消息目的地
 	 */
-	@Bean(name = "queue")
+	// @Bean(name = "queue")
 	public ActiveMQQueue setActiveMQQueue() {
 		return new ActiveMQQueue("spitter.alert.queue");
 	}
@@ -61,7 +59,7 @@ public class MQConfig {
 	 * 
 	 * @return 消息目的地
 	 */
-	@Bean(name = "topic")
+	// @Bean(name = "topic")
 	public ActiveMQTopic setActiveMQTopic() {
 		return new ActiveMQTopic("spitter.alert.topic");
 	}
@@ -71,7 +69,7 @@ public class MQConfig {
 	 * 
 	 * @return JMS模板
 	 */
-	@Bean(name = "jmsTemplate")
+	// @Bean(name = "jmsTemplate")
 	public JmsTemplate setJmsTemplate() {
 		JmsTemplate jmsTemplate = new JmsTemplate();
 		// 设置连接工厂

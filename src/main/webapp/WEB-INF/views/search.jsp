@@ -4,15 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="${pageContext.request.contextPath}/js/jquery-2.1.3.min.js"></script>
 <title>SpringMVC example</title>
-<script type="text/javascript">
-	document.onkeydown = function() {
-		if (event.keyCode == 13) {
-			 var y=document.getElementById("input")
-			y.submit();
-		}
-	}
-</script>
 </head>
 <body>
 	<form name="input" id="input" action="hello">
@@ -20,3 +13,11 @@
 	</form>
 </body>
 </html>
+<script type="text/javascript">
+    document.onkeydown = function() {
+        if (event.keyCode == 13) {
+             var y=document.getElementById("input")
+            y.submit();
+        }
+    }
+</script>

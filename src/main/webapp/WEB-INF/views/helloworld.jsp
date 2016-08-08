@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="${pageContext.request.contextPath}/js/jquery-2.1.3.min.js"></script>
 <title>Spring4 MVC -HelloWorld</title>
 </head>
 <body>

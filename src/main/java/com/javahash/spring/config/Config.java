@@ -3,8 +3,8 @@ package com.javahash.spring.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
@@ -20,7 +20,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 // @Configuration classes:
 //@Component
 // 基于注解的配置和xml配置混合使用
-@ImportResource(value = { "classpath:jms-config.xml" })
+// @ImportResource(value = { "classpath:jms-config.xml" })
 public class Config extends WebMvcConfigurerAdapter {
 
   // @Bean
@@ -36,10 +36,15 @@ public class Config extends WebMvcConfigurerAdapter {
   @Bean
   public UrlBasedViewResolver setupViewResolver() {
     UrlBasedViewResolver resolver = new UrlBasedViewResolver();
-    resolver.setPrefix("/WEB-INF/views/");
+		resolver.setPrefix("/WEB-INF/views/");
     resolver.setSuffix(".jsp");
     resolver.setViewClass(JstlView.class);
     return resolver;
   }
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/js/**").addResourceLocations("/js/").setCachePeriod(new Integer("3600"));
+	}
 
 }

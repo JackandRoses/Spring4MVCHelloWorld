@@ -4,7 +4,6 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -17,7 +16,7 @@ import com.javahash.spring.service.AlertService;
 @ComponentScan({ "com.javahash.spring" })
 public class AlertServiceImpl implements AlertService {
 
-	@Autowired
+//	@Autowired
 	JmsTemplate jmsTemplate;
 
 	@Override
