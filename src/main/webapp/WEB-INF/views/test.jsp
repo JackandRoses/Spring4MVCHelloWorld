@@ -8,17 +8,8 @@
 <title>SpringMVC example</title>
 </head>
 <body>
-	<form name="input" id="input" action="hello">
-		<input name="id" type="text" />
-		<input name="dataSrc" type="text" />
-	</form>
+<h1>Hello : ${name}</h1>
 </body>
 </html>
 <script type="text/javascript">
-    document.onkeydown = function() {
-        if (event.keyCode == 13) {
-             var y=document.getElementById("input")
-            y.submit();
-        }
-    }
 </script>

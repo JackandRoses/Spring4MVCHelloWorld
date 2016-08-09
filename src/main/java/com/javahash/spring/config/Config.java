@@ -4,10 +4,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
+
+import com.javahash.spring.interceptor.DataSourceChangeInterceptor;
 
 @Configuration
 // Marks this class as configuration
@@ -23,16 +26,6 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 // @ImportResource(value = { "classpath:jms-config.xml" })
 public class Config extends WebMvcConfigurerAdapter {
 
-  // @Bean
-  // public DriverManagerDataSource setUpDataSource() {
-  // DriverManagerDataSource dataSource = new DriverManagerDataSource();
-  // dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-  // dataSource.setUrl("jdbc:mysql://localhost:3306/zhouwf");
-  // dataSource.setUsername("root");
-  // dataSource.setPassword("1234");
-  // return dataSource;
-  // }
-
   @Bean
   public UrlBasedViewResolver setupViewResolver() {
     UrlBasedViewResolver resolver = new UrlBasedViewResolver();
@@ -47,4 +40,8 @@ public class Config extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/js/**").addResourceLocations("/js/").setCachePeriod(new Integer("3600"));
 	}
 
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new DataSourceChangeInterceptor()).addPathPatterns("/**").excludePathPatterns("/test/**");
+	}
 }

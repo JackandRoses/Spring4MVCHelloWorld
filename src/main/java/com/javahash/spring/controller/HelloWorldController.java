@@ -16,6 +16,9 @@ public class HelloWorldController {
 	private OpUserDAO opUserDAO;
 
 	// @Autowired
+	// private SelectUserMapper selectUserMapper;
+
+	// @Autowired
 	// private AlertService AlertService;
 
 	// @Autowired
@@ -62,6 +65,8 @@ public class HelloWorldController {
 			@ModelAttribute @RequestParam(value = "id", required = false, defaultValue = "100000") Integer id,
 			Model model) {
 		String userName = opUserDAO.selectUserNameById(id);
+		// User user = selectUserMapper.selectUserById(Integer.valueOf(id));
+		// model.addAttribute("name", user.getUserName());
 		model.addAttribute("name", userName);
 		// Spittle spittle = new Spittle();
 		// spittle.setVolume("10");

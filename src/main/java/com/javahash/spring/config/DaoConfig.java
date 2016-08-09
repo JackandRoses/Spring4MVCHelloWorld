@@ -1,15 +1,20 @@
 package com.javahash.spring.config;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 import org.springframework.stereotype.Component;
@@ -19,7 +24,7 @@ import com.javahash.spring.service.Ifuck;
 
 @Configuration
 @ComponentScan({ "com.javahash.spring" })
-@PropertySource({ "classpath:/db.properties", "classpath:/host.properties" })
+// @PropertySource({ "classpath:/db.properties", "classpath:/host.properties" })
 public class DaoConfig {
 
 	@Autowired
@@ -40,20 +45,39 @@ public class DaoConfig {
 	}
 
 	@Component("DataSrc")
+	// https://jira.spring.io/browse/SPR-8433 如果不是静态类就无法注入
 	static class CustomerRoutingDataSource extends AbstractRoutingDataSource {
 
-		@Override
-		protected Object determineCurrentLookupKey() {
-			return CustomerContextHolder.getType();
+		@Autowired(required = true)
+		@Qualifier(value = "myDataSource1")
+		private DataSource myDataSource1;
+
+		@Autowired(required = true)
+		@Qualifier(value = "myDataSource2")
+		private DataSource myDataSource2;
+
+		// 用autowired会有warning [Autowired annotation should be used on methods
+		// with actual parameters]，不太合适
+		@PostConstruct
+		public void setTargetDataSources() {
+			Map<Object, Object> targetDataSources = new HashMap<Object, Object>();
+			targetDataSources.put("myDataSource1", myDataSource1);
+			targetDataSources.put("myDataSource2", myDataSource2);
+			super.setTargetDataSources(targetDataSources);
 		}
 
 		@Autowired
 		public void setDefaultTargetDataSource(@Qualifier("myDataSource1") DataSource defaultTargetDataSource) {
 			super.setDefaultTargetDataSource(defaultTargetDataSource);
 		}
+
+		@Override
+		protected Object determineCurrentLookupKey() {
+			return CustomerContextHolder.getType();
+		}
 	}
 
-	static class CustomerContextHolder {
+	public static class CustomerContextHolder {
 		private static final ThreadLocal<String> contextHolder = new ThreadLocal<String>();
 
 		public static void setType(String type) {
@@ -65,6 +89,9 @@ public class DaoConfig {
 			return contextHolder.get();
 		}
 
+		public static String getDefaultDataSource() {
+			return "myDataSource1";
+		}
 	}
 
 	// DB 配置
@@ -100,4 +127,20 @@ public class DaoConfig {
 	public JdbcTemplate JdbcTemplate(@Qualifier("DataSrc") DataSource dataSource) {
 		return new JdbcTemplate(dataSource);
 	}
+
+	@Bean(name = "transactionManager")
+	public DataSourceTransactionManager DataSourceTransactionManager(@Qualifier("DataSrc") DataSource dataSource) {
+		DataSourceTransactionManager manager = new DataSourceTransactionManager();
+		manager.setDataSource(dataSource);
+		return manager;
+	}
+
+	@Bean(name = "sqlSessionFactory")
+	public SqlSessionFactoryBean SqlSessionFactoryBean(@Qualifier("DataSrc") DataSource dataSource) {
+		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+		sqlSessionFactoryBean.setDataSource(dataSource);
+		sqlSessionFactoryBean.setTypeAliasesPackage("com.javahash.spring.po");
+		return sqlSessionFactoryBean;
+	}
+
 }

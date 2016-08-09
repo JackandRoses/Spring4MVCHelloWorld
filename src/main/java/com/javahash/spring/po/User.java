@@ -1,5 +1,8 @@
 package com.javahash.spring.po;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("user")
 public class User {
 
   private Integer id;
