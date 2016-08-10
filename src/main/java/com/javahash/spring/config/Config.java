@@ -42,6 +42,7 @@ public class Config extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new DataSourceChangeInterceptor()).addPathPatterns("/**").excludePathPatterns("/test/**");
+		registry.addInterceptor(new DataSourceChangeInterceptor()).addPathPatterns("/**");
+		// .excludePathPatterns("/test/**");
 	}
 }

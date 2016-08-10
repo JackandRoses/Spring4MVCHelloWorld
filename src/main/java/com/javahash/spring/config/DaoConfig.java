@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -24,7 +25,7 @@ import com.javahash.spring.service.Ifuck;
 
 @Configuration
 @ComponentScan({ "com.javahash.spring" })
-// @PropertySource({ "classpath:/db.properties", "classpath:/host.properties" })
+@PropertySource({ "classpath:/db.properties", "classpath:/host.properties" })
 public class DaoConfig {
 
 	@Autowired

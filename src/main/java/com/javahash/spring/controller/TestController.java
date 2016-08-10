@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.javahash.spring.Dao.OpUserDAO;
+import com.javahash.spring.mapper.SelectUserMapper;
+import com.javahash.spring.po.User;
 
 @Controller
 public class TestController {
 	@Autowired
-	private OpUserDAO opUserDAO;
+	private SelectUserMapper selectUserMapper;
 
 	@RequestMapping("/test")
 	public String search(@ModelAttribute @RequestParam(value = "id", required = false, defaultValue = "100000") Integer id, Model model) {
@@ -21,7 +22,7 @@ public class TestController {
 
 	@ModelAttribute
 	public void setNameByUserId(@ModelAttribute @RequestParam(value = "id", required = false, defaultValue = "100000") Integer id, Model model) {
-		String userName = opUserDAO.selectUserNameById(id);
-		model.addAttribute("name", userName);
+		User user = selectUserMapper.selectUserById(id);
+		model.addAttribute("name", user.getUserName());
 	}
 }

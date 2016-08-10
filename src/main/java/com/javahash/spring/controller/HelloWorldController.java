@@ -7,16 +7,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.javahash.spring.Dao.OpUserDAO;
+import com.javahash.spring.mapper.SelectUserMapper;
+import com.javahash.spring.po.User;
 
 @Controller
 public class HelloWorldController {
 
-	@Autowired
-	private OpUserDAO opUserDAO;
-
 	// @Autowired
-	// private SelectUserMapper selectUserMapper;
+	// private OpUserDAO opUserDAO;
+
+	@Autowired
+	private SelectUserMapper selectUserMapper;
 
 	// @Autowired
 	// private AlertService AlertService;
@@ -64,10 +65,9 @@ public class HelloWorldController {
 	public void setNameByUserId(
 			@ModelAttribute @RequestParam(value = "id", required = false, defaultValue = "100000") Integer id,
 			Model model) {
-		String userName = opUserDAO.selectUserNameById(id);
-		// User user = selectUserMapper.selectUserById(Integer.valueOf(id));
-		// model.addAttribute("name", user.getUserName());
-		model.addAttribute("name", userName);
+		// String userName = opUserDAO.selectUserNameById(id);
+		User user = selectUserMapper.selectUserById(Integer.valueOf(id));
+		model.addAttribute("name", user.getUserName());
 		// Spittle spittle = new Spittle();
 		// spittle.setVolume("10");
 		// AlertService.sendSpittleAlert(spittle);
