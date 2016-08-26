@@ -1,0 +1,104 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul,li {
+	list-style: none;
+}
+
+img {
+	border: none;
+}
+
+#print-content {
+	width: 98%;
+	margin: 10px auto;
+}
+
+#print-content h1 {
+	font-size: 24px;
+	text-align: center;
+}
+
+.floatLeft {
+	float: left;
+}
+
+.floatRight {
+	float: right;
+}
+
+.headInfo {
+	margin: 5px auto;
+	height: 16px;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	border: 1px solid #000;
+	line-height: 32px;
+}
+
+.tableTopBorder_3 {
+	border-top: 3px solid #000;
+}
+
+td,th {
+	border: 1px solid #000;
+	text-align: center;
+	padding: 3px 5px;
+}
+
+.signatureArea {
+	height: 25px;
+	line-height: 25px;
+}
+.signatureArea .firstSpan{
+	margin-right:200px;
+}
+#print-content .header{ height:50px; position:relative;}
+#print-content .header h1{ padding-top:10px;}
+.printTm{ position:absolute; left:0px;  top:0px;}
+
+
+@media print
+{
+	.pageBreak {page-break-after:always;}
+	.noPrint{
+		display:none;
+	}
+}
+.btn_print{
+	-moz-user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857;
+    margin-bottom: 0;
+    padding: 6px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+	background-color: #337ab7;
+    border-color: #2e6da4;
+    color: #fff;
+}
+.btn_print:hover{
+	background-color: #286090;
+    border-color: #204d74;
+    color: #fff;
+}

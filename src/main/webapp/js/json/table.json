@@ -1,0 +1,70 @@
+{
+  "data": [
+    {
+      "serviceTypeName":"公安信息网专用安全U盘申领",
+      "serviceType": 1,
+      "serviceDesc": "",
+    },
+    {
+      "serviceTypeName":"公安信息网保护类设备或系统入网申请",
+      "serviceType": 1,
+      "serviceDesc": "",
+    },
+    {
+      "serviceTypeName":"公安信息网移动电子存储介质注册登记",
+      "serviceType": 1,
+      "serviceDesc": "为个人移动电子存储介质接入公安信息网提供在线申请入口，申请人可以在申请中选择接入电子存储介质类型以及注册类型。管理部门在收到网上申请单后，将开始给予办理注册工作。",
+    },
+    {
+      "serviceTypeName":"公安信息网边界接入业务申请",
+      "serviceType": 1,
+      "serviceDesc": "",
+    },
+    {
+      "serviceTypeName":"出入机房申请",
+      "serviceType": 1,
+      "serviceDesc": "",
+    },
+    {
+      "serviceTypeName":"手机短号虚拟网业务办理",
+      "serviceType": 1,
+      "serviceDesc": "",
+    },
+    {
+      "serviceTypeName":"接入公安信息网申请",
+      "serviceType": 1,
+      "serviceDesc": "为个人办公终端接入公安信息网提供在线申请入口，申请人可以在申请中选择接入类型以及申请人等信息。管理部门在收到网上申请单后，将开始给予办理公安信息网开通工作。",
+    },
+    {
+      "serviceTypeName":"接入国际互联网申请",
+      "serviceType": 1,
+      "serviceDesc": "",
+    },
+    {
+      "serviceTypeName":"数字证书申请",
+      "serviceType": 1,
+      "serviceDesc": "",
+    },
+    {
+      "serviceTypeName":"硬件设备使用申请",
+      "serviceType": 1,
+      "serviceDesc": "",
+    },
+    {
+      "serviceTypeName":"移动警务接入专用卡申领",
+      "serviceType": 1,
+      "serviceDesc": "",
+    },
+    {
+      "serviceTypeName":"设备进出厅机关集中式机房申请",
+      "serviceType": 1,
+      "serviceDesc": "",
+    },
+    {
+      "serviceTypeName":"集中式机房设备托管申请",
+      "serviceType": 1,
+      "serviceDesc": "",
+    },
+
+  ]
+}

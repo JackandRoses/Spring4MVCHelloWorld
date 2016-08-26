@@ -136,12 +136,22 @@ public class DaoConfig {
 		return manager;
 	}
 
-	@Bean(name = "sqlSessionFactory")
-	public SqlSessionFactoryBean SqlSessionFactoryBean(@Qualifier("DataSrc") DataSource dataSource) {
+	@Bean(name = "sqlSessionFactoryBeanA")
+	public SqlSessionFactoryBean SqlSessionFactoryBeanA(@Qualifier("myDataSource1") DataSource dataSource) {
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		sqlSessionFactoryBean.setDataSource(dataSource);
 		sqlSessionFactoryBean.setTypeAliasesPackage("com.javahash.spring.po");
 		return sqlSessionFactoryBean;
 	}
 
+	// @Bean(name = "sqlSessionFactoryBeanB")
+	// public SqlSessionFactoryBean
+	// SqlSessionFactoryBeanB(@Qualifier("myDataSource2") DataSource dataSource)
+	// {
+	// SqlSessionFactoryBean sqlSessionFactoryBean = new
+	// SqlSessionFactoryBean();
+	// sqlSessionFactoryBean.setDataSource(dataSource);
+	// sqlSessionFactoryBean.setTypeAliasesPackage("com.javahash.spring.po");
+	// return sqlSessionFactoryBean;
+	// }
 }

@@ -37,7 +37,7 @@ public class Config extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/js/**").addResourceLocations("/js/").setCachePeriod(new Integer("3600"));
+		registry.addResourceHandler("/js/**", "/css/**", "img/**", "fonts/**").addResourceLocations("/js/", "/css/**", "img/**", "fonts/**").setCachePeriod(new Integer("3600"));
 	}
 
 	@Override

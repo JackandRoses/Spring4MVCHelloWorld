@@ -1,0 +1,127 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.slots_left, .slots_right, .units {
+    height: 100%;
+    background: transparent;
+}
+
+.slots {
+    position: absolute;
+    top: 0px;
+    color: #01ccff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.slots li {
+    margin-top: 1px;
+    height: 47px;
+    line-height: 47px;
+}
+
+.slots_left {
+    width: 34px;
+    left: 0px;
+}
+
+.slots_right {
+    width: 30px;
+    right: 0px;
+}
+
+.rack {
+    background: #181A1E url("../../../images/process/center/sortable/li_bg.png") 0px 0px repeat-y;
+    background-size: 100% auto;
+    position: relative;
+    width: 419px;
+    /*margin: 0 auto;*/
+    /*height: 1972px;*/
+}
+
+.units {
+    width: 100%;
+}
+
+.unit_holder {
+    margin: 0px 20px 0px 26px;
+}
+
+.unit {
+    /*background-position: -1px -2px;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.unit_wrapper{
+    cursor: move;
+    position: relative;
+}
+
+.unit_fixed{
+    cursor : not-allowed;
+}
+
+.unit_empty{
+    cursor: default;
+}
+
+
+.layer {
+    height: 48px;
+}
+
+.tooltip{
+    z-index: 999999;
+}
+
+.unit_op_remove,.unit_op_cancel{
+    color: #fff;
+    border-radius: 4px;
+    line-height: 17px;
+    position: absolute;
+    width: 20px;
+    height: 70px;
+    padding: 2px;
+    right: 0;
+    top: 50%;
+    margin-top: -37px;
+    text-align: center;
+    font-size: 10px;
+    cursor: default;
+    z-index: 999999;
+}
+
+body.dragging, body.dragging * {
+    cursor: move !important;
+}
+
+.dragged {
+    position: absolute;
+    opacity: 0.5;
+    z-index: 2000;
+}
+
+li.placeholder {
+    position: relative;
+    height: 48px;
+    opacity: 0.2;
+    background-color: #5F9EDF;
+    z-index: 100;
+    /** More li styles **/
+}
+
+li.placeholder:before {
+    position: absolute;
+    color: pink;
+    /** Define arrowhead **/
+}

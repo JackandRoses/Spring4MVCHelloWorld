@@ -33,7 +33,7 @@ import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-@PropertySource({ "classpath:/db.properties", "classpath:/host.properties" })
+@PropertySource({ "classpath:/db4activity.properties", "classpath:/host.properties" })
 public class ActivitiEngineConfiguration {
 	private final Logger log;
 

@@ -1,8 +1,10 @@
 package com.javahash.spring.config;
 
+import javax.servlet.Filter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -17,7 +19,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
     // Dynamic servlet = servletContext.addServlet("dispatcher", new DispatcherServlet(ctx));
     // servlet.addMapping("/");
     // servlet.setLoadOnStartup(1);
-
+		System.out.println("spring 上下文初始化完成......");
   }
 
   @Override
@@ -35,4 +37,13 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
     return new String[] {"/"};
   }
 
+	@Override
+	protected Filter[] getServletFilters() {
+		Filter[] filters = new Filter[1];
+		CharacterEncodingFilter characterFilter = new CharacterEncodingFilter();
+		characterFilter.setForceEncoding(true);
+		characterFilter.setEncoding("UTF-8");
+		filters[0] = characterFilter;
+		return filters;
+	}
 }
